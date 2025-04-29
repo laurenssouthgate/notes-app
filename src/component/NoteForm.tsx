@@ -8,13 +8,12 @@ type NoteFormProps = {
 
 export default function NoteForm({ onSubmit } : NoteFormProps) {
     const [note, setNote] = useState<Note | null>(null)
-    const { editingNote } = useNoteContext()
+    const { editingNote, toggleOpen, setEditingNote } = useNoteContext()
     
     useEffect(() => {
         if (editingNote) {
             setNote(editingNote)
-        }
-        if (!editingNote) {
+        } else {
             setNote({
                 id: Date.now(),
                 title: '',
@@ -36,10 +35,18 @@ export default function NoteForm({ onSubmit } : NoteFormProps) {
         if (!note) return
         onSubmit(note)
     }
+
+    const handleGoBack = () => {
+        setEditingNote(null)
+        toggleOpen()
+    }
     
     return (
         <form onSubmit={ handleSubmit }>
-            <h1>{ note !== null ? 'Edit note' : 'Add note' }</h1>
+            <button type="button" onClick={ handleGoBack } >
+                Go back
+            </button>
+            <h1>{ editingNote ? 'Edit note' : 'Add note' }</h1>
             <input
                 type="text"
                 value={ note?.title || '' }
