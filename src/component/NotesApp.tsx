@@ -31,19 +31,17 @@ export default function NotesApp() {
     const handleSubmit = (submittedNote: Note) => {
         if (editingNote) {
             setNotes(notes => {
-                if (!notes) return [submittedNote]
-                return notes.map(note => note.id === submittedNote.id ? submittedNote : note)
+                const updatedNotes = !notes ? [submittedNote] : notes.map(note => note.id === submittedNote.id ? submittedNote : note)
+                _LocalStorage.saveNotes(updatedNotes)
+                return updatedNotes
             })
-        }
-
-        if (!editingNote) {
+        } else {
             setNotes(notes => {
-                if (!notes) return [submittedNote]
-                return [...notes, submittedNote]
+                const updatedNotes = !notes ? [submittedNote] : [...notes, submittedNote]
+                _LocalStorage.saveNotes(updatedNotes)
+                return updatedNotes
             })
         }
-
-        if (notes) _LocalStorage.saveNotes(notes)
 
         setIsFormOpen(false)
         setEditingNote(null)

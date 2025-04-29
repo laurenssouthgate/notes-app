@@ -1,6 +1,7 @@
 import NotePreview from "./NotePreview.tsx";
 import useNoteContext from "../hook/useNoteContext.tsx";
 import {Note} from "../model/Note.tsx";
+import './NotesDisplay.css'
 
 type NotesDisplayProps = {
     notes: Note[] | null
