@@ -1,6 +1,7 @@
 import NotePreview from "./NotePreview.tsx";
 import useNoteContext from "../hook/useNoteContext.tsx";
 import {Note} from "../model/Note.tsx";
+import addIcon from "../assets/add.svg"
 import './NotesDisplay.css'
 
 type NotesDisplayProps = {
@@ -24,7 +25,7 @@ export default function NotesDisplay({ notes } : NotesDisplayProps) {
                     ))
             }
             <button type="button" className="add-note-btn" onClick={ clickHandler }>
-                +
+                <img src={ addIcon } alt="Add note" width={ 30 } />
             </button>
         </div>
     )

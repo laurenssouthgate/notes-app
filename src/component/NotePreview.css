@@ -5,8 +5,7 @@
     background: #fff;
     color: #333;
     aspect-ratio: 1/1.4142;
-    padding: 1rem;
-    word-break: break-all;
+    word-break: break-word;
     position: relative;
     overflow: hidden;
 
@@ -15,7 +14,7 @@
         position: absolute;
         width: 100%;
         aspect-ratio: 1/1.4142;
-        background: rgba(0 0 0 / 0.3);
+        background: rgba(0 0 0 / 0.1);
         top: 0;
         left: 0;
         opacity: 0;
@@ -26,6 +25,12 @@
         &::after {
             opacity: 1;
         }
+    }
+
+    .padding-container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
     }
 
     .note-btns {

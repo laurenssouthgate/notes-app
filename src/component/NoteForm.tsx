@@ -1,6 +1,8 @@
 import useNoteContext from "../hook/useNoteContext.tsx";
 import {ChangeEvent, useEffect, useState} from "react";
 import {Note} from "../model/Note.tsx";
+import backArrow from '../assets/go-back.svg'
+import './NoteForm.css'
 
 type NoteFormProps = {
     onSubmit: (note: Note) => void
@@ -42,21 +44,27 @@ export default function NoteForm({ onSubmit } : NoteFormProps) {
     }
     
     return (
-        <form onSubmit={ handleSubmit }>
-            <button type="button" onClick={ handleGoBack } >
-                Go back
+        <form
+            className='note-form'
+            onSubmit={ handleSubmit }>
+            <button type="button" onClick={ handleGoBack } className="go-back-btn">
+                <img src={ backArrow } alt="Go back" width={ 16 } />
             </button>
             <h1>{ editingNote ? 'Edit note' : 'Add note' }</h1>
             <input
                 type="text"
                 value={ note?.title || '' }
                 name="title"
+                placeholder="Title"
                 onChange={ changeHandler }
+                required={ true }
             />
             <textarea
                 value={ note?.text || '' }
                 name="text"
+                placeholder="Text"
                 onChange={ changeHandler }
+                required={ true }
             />
             <button type="submit">
                 Add note

@@ -20,12 +20,19 @@ export default function NotesApp() {
     }, [])
 
     const toggleOpen = () => setIsFormOpen(formOpen => !formOpen)
+    const deleteNote = (id: number) => {
+        if (!notes) return
+        const updatedNotes = notes?.filter(note => note.id !== id)
+        setNotes(updatedNotes)
+        _LocalStorage.saveNotes(updatedNotes)
+    }
 
     const contextValues = {
         isFormOpen,
         toggleOpen,
         editingNote,
-        setEditingNote
+        setEditingNote,
+        deleteNote
     }
 
     const handleSubmit = (submittedNote: Note) => {

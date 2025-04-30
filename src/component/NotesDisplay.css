@@ -1,6 +1,8 @@
 .notes-window {
+    translate: 0 90px;
     width: 100%;
     max-width: 75rem;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
@@ -8,9 +10,21 @@
     @media only screen and (max-width: 75rem) {
         max-width: calc(100% - 5vw);
     }
+
+    @media only screen and (max-width: 680px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .add-note-btn {
-    aspect-ratio: 1/1.4142;
-    width: 100%;
+    aspect-ratio: 1 / 1.4142;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: 1px dashed #333;
+    transition: background-color 150ms ease-in-out;
+
+    &:hover {
+        background: rgba(0 0 0 / 0.1);
+    }
 }

@@ -6,6 +6,7 @@ type NoteContextType = {
     toggleOpen: () => void
     editingNote: Note | null
     setEditingNote: (note: Note | null) => void
+    deleteNote: (id: number) => void
 }
 
 export const NoteContext = createContext<NoteContextType | undefined>(undefined)
